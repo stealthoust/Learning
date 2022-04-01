@@ -1,4 +1,8 @@
 package com.mycompany.nauczyciel;
 
-public interface NauczycielRepository {
+import com.mycompany.user.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface NauczycielRepository extends CrudRepository<User, Integer> {
+    public Long countById(Integer id);
 }
