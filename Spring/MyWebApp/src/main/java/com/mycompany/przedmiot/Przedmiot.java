@@ -6,5 +6,7 @@ public class Przedmiot {
 
     private String nazwa;
 
+    private String typ; //wykład, zajecia praktyczne, laboratorium
+
     private String opis;
 }

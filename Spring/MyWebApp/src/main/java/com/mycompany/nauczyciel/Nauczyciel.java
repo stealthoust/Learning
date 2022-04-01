@@ -9,4 +9,8 @@ public class Nauczyciel {
     private String nazwisko;
 
     private String tytul;
+
+    private String email;
+
+    private String nr_tel;
 }

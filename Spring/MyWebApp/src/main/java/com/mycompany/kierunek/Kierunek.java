@@ -6,5 +6,5 @@ public class Kierunek {
 
     private String nazwa;
 
-    private String typ;
+    private String typ; //licencjat, inzynierskie, magisterskie
 }
