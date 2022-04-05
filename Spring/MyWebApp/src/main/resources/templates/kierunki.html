@@ -1,1 +1,49 @@
-// lista w tabeli wszystkich kierunkow
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h1>Zarządzaj kierunkami</h1></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/kierunki/new}">Dodaj nowy kierunek</a>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Typ</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="kierunek : ${listKierunki}">
+                <tr>
+                    <td>[[${kierunek.id}]]</td>
+                    <td>[[${kierunek.nazwa}]]</td>
+                    <td>[[${kierunek.typ}]]</td>
+
+                    <td>
+                        <a class="h4" th:href="@{'/kierunki/edit/'+${kierunek.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/kierunki/delete/'+${kierunek.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
+
