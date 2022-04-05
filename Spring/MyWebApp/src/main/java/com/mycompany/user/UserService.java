@@ -24,13 +24,13 @@ public class UserService {
         if (result.isPresent()) {
             return result.get();
         }
-        throw new UserNotFoundException("User not found with ID: " + id);
+        throw new UserNotFoundException("Nie znaleziono studenta o ID: " + id);
     }
 
     public void delete(Integer id) throws UserNotFoundException {
         Long count=repo.countById(id);
                 if(count==null || count==0){
-                    throw new UserNotFoundException("User not found with ID: " + id);
+                    throw new UserNotFoundException("Nie znaleziono studenta o ID: " + id);
                 }
         repo.deleteById(id);
     }

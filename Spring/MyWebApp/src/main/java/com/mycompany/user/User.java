@@ -1,5 +1,7 @@
 package com.mycompany.user;
 
+import com.mycompany.kierunek.Kierunek;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "kierunek_id", referencedColumnName = "id")
+    private Kierunek kierunek;
 
     @Column(nullable = false,unique = true,length = 45)
     private String email;
@@ -80,5 +86,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Kierunek getKierunek() {
+        return kierunek;
+    }
+
+    public void setKierunek(Kierunek kierunek) {
+        this.kierunek = kierunek;
     }
 }
