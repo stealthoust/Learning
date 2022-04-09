@@ -1,1 +1,54 @@
-//wyswietla tabele wszystkich przedmiotow
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarządzaj przedmiotami</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h1>Zarządzaj przedmiotami</h1></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/przedmioty/new}">Dodaj nowy przedmiot</a>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Typ</th>
+                <th>Nauczyciel</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="przedmiot : ${listaPrzedmiotow}">
+                <tr>
+                    <td>[[${przedmiot.id}]]</td>
+                    <td>[[${przedmiot.nazwa}]]</td>
+                    <td>[[${przedmiot.opis}]]</td>
+                    <td>[[${przedmiot.typ}]]</td>
+                    <td>[[${przedmiot.nauczyciel.imie}]] [[${przedmiot.nauczyciel.nazwisko}]] </td>
+
+
+                    <td>
+                        <a class="h4" th:href="@{'/przedmioty/edit/'+${przedmiot.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/przedmioty/delete/'+${przedmiot.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
+
