@@ -8,8 +8,7 @@ public class MainController {
 
     @GetMapping("")
     public String showHomePage() {
-        System.out.println("main controller");
-        System.out.println("main asffsafcontroller");
+
 
         return "index";
     }
