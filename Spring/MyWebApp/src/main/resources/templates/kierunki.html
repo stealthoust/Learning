@@ -23,15 +23,19 @@
                 <th>ID</th>
                 <th>Nazwa</th>
                 <th>Typ</th>
+                <th>Przedmioty</th>
+                <th>Studenci</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="kierunek : ${listKierunki}">
+            <th:block th:each="kierunek : ${listKierunki}" >
                 <tr>
                     <td>[[${kierunek.id}]]</td>
                     <td>[[${kierunek.nazwa}]]</td>
                     <td>[[${kierunek.typ}]]</td>
+                    <td>[[${kierunek.getPrzedmiotyString}]]</td>
+                    <td>[[${kierunek.getStudenciString}]]</td>
 
                     <td>
                         <a class="h4" th:href="@{'/kierunki/edit/'+${kierunek.id}}">Edit</a>

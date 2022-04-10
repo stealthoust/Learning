@@ -3,6 +3,8 @@ package com.mycompany.controllers;
 import com.mycompany.kierunek.Kierunek;
 import com.mycompany.kierunek.KierunekNotFoundException;
 import com.mycompany.kierunek.KierunekService;
+import com.mycompany.przedmiot.Przedmiot;
+import com.mycompany.przedmiot.PrzedmiotService;
 import com.mycompany.user.User;
 import com.mycompany.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +15,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class KierunekController {
 
     @Autowired private KierunekService service;
 
+
     @GetMapping("/kierunki")
     public String showKierunkiList(Model model){
         List<Kierunek> listKierunki=service.listaKierunkow();
         model.addAttribute("listKierunki",listKierunki);
+
+
+
         return "kierunki";
     }
     @GetMapping("/kierunki/new")

@@ -1,6 +1,8 @@
 package com.mycompany.kierunek;
 
 
+import com.mycompany.przedmiot.Przedmiot;
+import com.mycompany.przedmiot.PrzedmiotRepository;
 import com.mycompany.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class KierunekService {
     public List<Kierunek> listaKierunkow() {
         return (List<Kierunek>) repo.findAll();
     }
+
+
      public void save(Kierunek kierunek) {
         repo.save(kierunek);
     }

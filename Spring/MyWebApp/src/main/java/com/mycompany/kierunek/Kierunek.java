@@ -5,7 +5,9 @@ import com.mycompany.przedmiot.Przedmiot;
 import com.mycompany.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +31,7 @@ public class Kierunek {
     @Column(length = 45,nullable = false)
     private String typ; //licencjat, inzynierskie, magisterskie
 
+
     public Integer getId() {
         return id;
     }
@@ -47,6 +50,26 @@ public class Kierunek {
 
     public Set<Przedmiot> getPrzedmioty() {
         return przedmioty;
+    }
+
+    public String getPrzedmiotyString()
+    {
+        StringBuilder stringBuilder=new StringBuilder();
+        for(Przedmiot przedmiot:przedmioty)
+        {
+            stringBuilder.append(przedmiot.getNazwa()+", ");
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getStudenciString()
+    {
+        StringBuilder stringBuilder=new StringBuilder();
+        for(User student:users)
+        {
+            stringBuilder.append(student.getFirstName()+" "+student.getLastName()+", ");
+        }
+        return stringBuilder.toString();
     }
 
     public void setPrzedmioty(Set<Przedmiot> przedmioty) {
