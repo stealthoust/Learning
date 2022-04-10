@@ -23,6 +23,7 @@ import java.util.Set;
 public class KierunekController {
 
     @Autowired private KierunekService service;
+    @Autowired private PrzedmiotService przedmiotService;
 
 
     @GetMapping("/kierunki")
@@ -36,6 +37,8 @@ public class KierunekController {
     }
     @GetMapping("/kierunki/new")
     public String showNewForm(Model model){
+        List<Przedmiot> listPrzedmioty=przedmiotService.listaPrzedmiotow();
+        model.addAttribute("listPrzedmioty",listPrzedmioty);
         model.addAttribute("kierunek",new Kierunek());
         model.addAttribute("pageTitle","Dodaj kierunek");
         return "kierunek_form";

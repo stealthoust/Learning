@@ -1,9 +1,6 @@
 package com.mycompany.kierunek;
 
 
-import com.mycompany.przedmiot.Przedmiot;
-import com.mycompany.przedmiot.PrzedmiotRepository;
-import com.mycompany.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

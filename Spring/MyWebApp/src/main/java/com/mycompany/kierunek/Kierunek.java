@@ -57,7 +57,7 @@ public class Kierunek {
         StringBuilder stringBuilder=new StringBuilder();
         for(Przedmiot przedmiot:przedmioty)
         {
-            stringBuilder.append(przedmiot.getNazwa()+", ");
+            stringBuilder.append(przedmiot.getNazwa()+"("+przedmiot.getTyp()+"), ");
         }
         return stringBuilder.toString();
     }
@@ -67,7 +67,7 @@ public class Kierunek {
         StringBuilder stringBuilder=new StringBuilder();
         for(User student:users)
         {
-            stringBuilder.append(student.getFirstName()+" "+student.getLastName()+", ");
+            stringBuilder.append(student.getFirstName()+" "+student.getLastName()+"(s"+student.getId()+"), ");
         }
         return stringBuilder.toString();
     }
