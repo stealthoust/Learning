@@ -31,12 +31,17 @@
           <input type="text" class="form-control" name="email" th:field="*{lastName}" required minlength="2" maxlength="45"/>
         </div>
     </div>
-    <div class="row">
-      <label class="col-sm-4 col-form-label">Password:</label>
+      <label class="col-sm-4 col-form-label">Nauczyciel</label>
       <div class="col-sm-8">
-        <input type="password" class="form-control" name="password" th:field="*{password}" required minlength="5" maxlength="15" />
+
+        <select class="form-control" id="kierunek" name="kierunek">
+          <option th:each="kierunek:${listaKierunkow}"
+                  th:value="${kierunek.id}"
+                  th:text="${kierunek.nazwa}+ ' ('+${kierunek.typ}+ ')'">
+          </option>
+        </select>
+
       </div>
-    </div>
       <div class="row">
         <label class="col-sm-4 col-form-label">Enabled:</label>
         <div class="col-sm-8">

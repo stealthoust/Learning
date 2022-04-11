@@ -21,7 +21,6 @@ public class UserRepositoryTests {
     public void testAdd() {
         User user = new User();
         user.setEmail("test.email@gmail.com");
-        user.setPassword("TestPassword");
         user.setFirstName("TestFirstName");
         user.setLastName("TestLastName");
 
@@ -45,11 +44,8 @@ public class UserRepositoryTests {
         Integer userId = 1;
         Optional<User> optionalUser = repo.findById(userId);
         User user=optionalUser.get();
-        user.setPassword("hello2000");
         repo.save(user);
 
-        User updatedUser = repo.findById(userId).get();
-        Assertions.assertThat(updatedUser.getPassword()).isEqualTo("hello2000");
 
     }
 

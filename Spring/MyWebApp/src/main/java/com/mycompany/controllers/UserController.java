@@ -1,5 +1,8 @@
 package com.mycompany.controllers;
 
+import com.mycompany.kierunek.Kierunek;
+import com.mycompany.kierunek.KierunekService;
+import com.mycompany.nauczyciel.Nauczyciel;
 import com.mycompany.user.User;
 import com.mycompany.user.UserNotFoundException;
 import com.mycompany.user.UserService;
@@ -17,6 +20,8 @@ import java.util.List;
 public class UserController {
     @Autowired private UserService service;
 
+    @Autowired private KierunekService kierunekService;
+
     @GetMapping("/users")
     public String showUserList(Model model) {
         List<User> listUsers=service.listAll();
@@ -27,6 +32,9 @@ public class UserController {
 
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
+        List<Kierunek> listaKierunkow=kierunekService.listaKierunkow();
+        model.addAttribute("listaKierunkow",listaKierunkow);
+
         model.addAttribute("user",new User());
         model.addAttribute("pageTitle","Add New User");
         return "user_form";
@@ -43,6 +51,8 @@ public class UserController {
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
            User user= service.get(id);
+            List<Kierunek> listaKierunkow=kierunekService.listaKierunkow();
+            model.addAttribute("listaKierunkow",listaKierunkow);
             model.addAttribute("user",user);
             model.addAttribute("pageTitle","Edit User (ID: "+id+")");
             return "user_form";
