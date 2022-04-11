@@ -36,14 +36,14 @@ public class UserController {
         model.addAttribute("listaKierunkow",listaKierunkow);
 
         model.addAttribute("user",new User());
-        model.addAttribute("pageTitle","Add New User");
+        model.addAttribute("pageTitle","Dodaj nowego studenta");
         return "user_form";
     }
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra) {
         service.save(user);
-        ra.addFlashAttribute("message", "User successfully saved!");
+        ra.addFlashAttribute("message", "Student pomyślnie zapisany!");
         return "redirect:/users";
     }
 
@@ -54,10 +54,10 @@ public class UserController {
             List<Kierunek> listaKierunkow=kierunekService.listaKierunkow();
             model.addAttribute("listaKierunkow",listaKierunkow);
             model.addAttribute("user",user);
-            model.addAttribute("pageTitle","Edit User (ID: "+id+")");
+            model.addAttribute("pageTitle","Edytujesz studenta o ID: "+id+")");
             return "user_form";
         } catch (UserNotFoundException e) {
-            ra.addFlashAttribute("message","The user have been saved succesfully");
+            ra.addFlashAttribute("message","Student zapisany pomyślnie!");
             return "redirect:/users";
         }
     }
@@ -66,9 +66,9 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);
-            ra.addFlashAttribute("message", "User successfully deleted!");
+            ra.addFlashAttribute("message", "Student pomyślnie usunięty!");
         } catch (UserNotFoundException e) {
-            ra.addFlashAttribute("message", "User not found!");
+            ra.addFlashAttribute("message", "Nie znaleziono studenta!!");
         }
         return "redirect:/users";
     }
