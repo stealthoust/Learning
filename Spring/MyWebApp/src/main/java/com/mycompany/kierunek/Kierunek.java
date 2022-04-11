@@ -18,11 +18,15 @@ public class Kierunek {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @OneToMany (mappedBy = "kierunek")
     private Set<User> users =new HashSet<>();
 
-    @ManyToMany(mappedBy = "kierunki")
+    @ManyToMany
+    @JoinTable(
+            name="przedmioty_kierunek",
+            joinColumns=@JoinColumn(name="kierunek_id"),
+            inverseJoinColumns=@JoinColumn(name="przedmiot_id")
+    )
     private Set<Przedmiot> przedmioty=new HashSet<>();
 
     @Column(length = 45,nullable = false)
@@ -30,7 +34,6 @@ public class Kierunek {
 
     @Column(length = 45,nullable = false)
     private String typ; //licencjat, inzynierskie, magisterskie
-
 
     public Integer getId() {
         return id;
@@ -91,4 +94,7 @@ public class Kierunek {
     public void setTyp(String typ) {
         this.typ = typ;
     }
+
+/*    @ManyToMany(mappedBy = "kierunki")
+    private Set<Przedmiot> przedmioty=new HashSet<>();*/
 }

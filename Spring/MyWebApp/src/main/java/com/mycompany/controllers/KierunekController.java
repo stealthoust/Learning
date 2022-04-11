@@ -31,8 +31,6 @@ public class KierunekController {
         List<Kierunek> listKierunki=service.listaKierunkow();
         model.addAttribute("listKierunki",listKierunki);
 
-
-
         return "kierunki";
     }
     @GetMapping("/kierunki/new")
@@ -73,6 +71,40 @@ public class KierunekController {
             ra.addFlashAttribute("message", "Nie znaleziono kierunku");
         }
         return "redirect:/kierunki";
+    }
+
+    @GetMapping("/kierunekPrzedmiot/new")
+    public String showNewKPForm(Model model){
+        List<Przedmiot> listPrzedmioty=przedmiotService.listaPrzedmiotow();
+        model.addAttribute("listPrzedmioty",listPrzedmioty);
+        model.addAttribute("kierunek",new Kierunek());
+        model.addAttribute("pageTitle","Dodaj kierunek");
+        return "kierunek_form";
+    }
+
+    @PostMapping("/kierunekPrzedmiot/new")
+    public String saveKP(Kierunek kierunek, RedirectAttributes ra){
+
+        service.save(kierunek);
+        ra.addFlashAttribute("message", "Kierunek pomyślnie zapisany!");
+        return "redirect:/kierunki";
+
+    }
+
+    @GetMapping("/kierunekPrzedmiot/edit/{id}")
+    public String showEdiKPtForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+        try {
+            Kierunek kierunek= service.get(id);
+            model.addAttribute("kierunek",kierunek);
+            model.addAttribute("pageTitle","Edytujesz kierunek o (ID: "+id+")");
+            List<Przedmiot> listPrzedmioty=przedmiotService.listaPrzedmiotow();
+            model.addAttribute("listPrzedmioty",listPrzedmioty);
+
+            return "kierunek_form";
+        } catch (KierunekNotFoundException e) {
+            ra.addFlashAttribute("message","Kierunek zapisany pomyślnie");
+            return "redirect:/kierunki";
+        }
     }
 
 }
