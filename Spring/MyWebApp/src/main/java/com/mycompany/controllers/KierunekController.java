@@ -35,8 +35,6 @@ public class KierunekController {
     }
     @GetMapping("/kierunki/new")
     public String showNewForm(Model model){
-        List<Przedmiot> listPrzedmioty=przedmiotService.listaPrzedmiotow();
-        model.addAttribute("listPrzedmioty",listPrzedmioty);
         model.addAttribute("kierunek",new Kierunek());
         model.addAttribute("pageTitle","Dodaj kierunek");
         return "kierunek_form";
@@ -49,18 +47,6 @@ public class KierunekController {
         return "redirect:/kierunki";
     }
 
-    @GetMapping("/kierunki/edit/{id}")
-    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-        try {
-            Kierunek kierunek= service.get(id);
-            model.addAttribute("kierunek",kierunek);
-            model.addAttribute("pageTitle","Edytujesz kierunek o (ID: "+id+")");
-            return "kierunek_form";
-        } catch (KierunekNotFoundException e) {
-            ra.addFlashAttribute("message","Kierunek zapisany pomyślnie");
-            return "redirect:/kierunki";
-        }
-    }
 
     @GetMapping("/kierunki/delete/{id}")
     public String deleteKierunek(@PathVariable("id") Integer id, RedirectAttributes ra) {
@@ -79,7 +65,7 @@ public class KierunekController {
         model.addAttribute("listPrzedmioty",listPrzedmioty);
         model.addAttribute("kierunek",new Kierunek());
         model.addAttribute("pageTitle","Dodaj kierunek");
-        return "kierunek_form";
+        return "Kierunek_form";
     }
 
     @PostMapping("/kierunekPrzedmiot/new")
