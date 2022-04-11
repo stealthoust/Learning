@@ -24,7 +24,7 @@ public class User {
     @Column(length = 45,nullable = false, name = "last_name")
     private String lastName;
 
-    private boolean enabled;
+    private boolean stypendium;
 
     public Integer getId() {
         return id;
@@ -68,12 +68,12 @@ public class User {
                 '}';
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isStypendium() {
+        return stypendium;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setStypendium(boolean stypendium) {
+        this.stypendium = stypendium;
     }
 
     public Kierunek getKierunek() {

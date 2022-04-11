@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Users</title>
+    <title>Zarządzaj studentami</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 </head>
 <body>
 <div class="container-fluid text-center">
-    <div><h1>Manage Users</h1></div>
+    <div><h1>Zarządzaj studentami</h1></div>
 <div class="m-2">
-    <a class="h3" th:href="@{/users/new}">Add New User</a>
+    <a class="h3" th:href="@{/users/new}">Dodaj nowego studenta</a>
 </div>
 
    <div th:if="${message}" class="alert alert-success text-center">
@@ -22,10 +22,10 @@
             <tr>
                 <th>ID</th>
                 <th>E-mail</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
                 <th>Kierunek</th>
-                <th>Enabled</th>
+                <th>Stypendium</th>
                 <th></th>
             </tr>
             </thead>
@@ -37,10 +37,10 @@
                     <td>[[${user.firstName}]]</td>
                     <td>[[${user.lastName}]]</td>
                     <td>[[${user.kierunek.nazwa}]]</td>
-                    <td>[[${user.enabled}]]</td>
+                    <td>[[${user.stypendium}]]</td>
                     <td>
-                        <a class="h4" th:href="@{'/users/edit/'+${user.id}}">Edit</a>
-                        <a class="h4" th:href="@{'/users/delete/'+${user.id}}">Delete</a>
+                        <a class="h4" th:href="@{'/users/edit/'+${user.id}}">Edytuj</a>
+                        <a class="h4" th:href="@{'/users/delete/'+${user.id}}">Usuń</a>
                     </td>
                 </tr>
             </th:block>
