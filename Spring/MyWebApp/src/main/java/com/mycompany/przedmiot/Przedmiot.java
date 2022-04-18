@@ -15,7 +15,7 @@ public class Przedmiot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "nauczyciel_id", referencedColumnName = "id")
     private Nauczyciel nauczyciel;
 

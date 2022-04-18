@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "kierunek_id", referencedColumnName = "id")
     private Kierunek kierunek;
 
