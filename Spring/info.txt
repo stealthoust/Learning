@@ -1,0 +1,5 @@
+Projekt wykonałem w Intelij Ultimate, na uczelni próbowałem uruchomić w Intelij Community
+i również działa. Najpierw zalecam zaimportować bazę danych (plik dorzuciłem) lub utworzyć pustą
+w xamppie o nazwie 'uczelnia' a po uruchomieniu reszta tabel utworzy się automatycznie.
+(połączenie oraz nazwę bazy danych można skonfigurować w pliku resources/application.properties).
+Po pomyślnym uruchomieniu aplikacji, należy udać się na adres: localhost:8080
