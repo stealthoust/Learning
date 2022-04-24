@@ -68,7 +68,7 @@
 <div class="container-fluid text-center">
     <div><h1>Zarządzaj nauczycielami</h1></div>
     <div class="m-2">
-        <a class="h3" th:href="@{/nauczyciele/new}">Dodaj nowego nauczyciela</a>
+        <a class="h3 btn btn-success" th:href="@{/nauczyciele/new}">Dodaj nowego nauczyciela</a>
     </div>
 
     <div th:if="${message}" class="alert alert-success text-center">
@@ -99,8 +99,8 @@
                     <td>[[${nauczyciel.tytul}]]</td>
 
                     <td>
-                        <a class="h4" th:href="@{'/nauczyciele/edit/'+${nauczyciel.id}}">Edytuj</a>
-                        <a class="h4" th:href="@{'/nauczyciele/delete/'+${nauczyciel.id}}">Usuń</a>
+                        <a class="h4 btn btn-primary m-2" th:href="@{'/nauczyciele/edit/'+${nauczyciel.id}}">Edytuj</a>
+                        <a class="h4 btn btn-danger m-2" th:href="@{'/nauczyciele/delete/'+${nauczyciel.id}}">Usuń</a>
                     </td>
                 </tr>
             </th:block>

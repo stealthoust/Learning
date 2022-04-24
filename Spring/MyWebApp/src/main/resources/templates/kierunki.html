@@ -69,7 +69,7 @@
 <div class="container-fluid text-center">
     <div><h1>Zarządzaj kierunkami</h1></div>
     <div class="m-2">
-        <a class="h3" th:href="@{/kierunekPrzedmiot/new}">Dodaj nowy kierunek</a>
+        <a class="h3 btn btn-success" th:href="@{/kierunekPrzedmiot/new}">Dodaj nowy kierunek</a>
     </div>
 
     <div th:if="${message}" class="alert alert-success text-center">
@@ -98,8 +98,8 @@
                     <td>[[${kierunek.getStudenciString}]]</td>
 
                     <td>
-                        <a class="h4" th:href="@{'/kierunekPrzedmiot/edit/'+${kierunek.id}}">Edytuj</a>
-                        <a class="h4" th:href="@{'/kierunki/delete/'+${kierunek.id}}">Usuń</a>
+                        <a class="h4 btn btn-primary m-2" th:href="@{'/kierunekPrzedmiot/edit/'+${kierunek.id}}">Edytuj</a>
+                        <a class="h4 btn btn-danger m-2" th:href="@{'/kierunki/delete/'+${kierunek.id}}">Usuń</a>
                     </td>
                 </tr>
             </th:block>
